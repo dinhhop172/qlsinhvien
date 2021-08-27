@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Exception;
+use Models\Database;
 use PDO;
 
 // require_once '../vendor/autoload.php';

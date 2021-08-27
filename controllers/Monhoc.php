@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Models\Database;
+
 class Monhoc
 {
    public static function index()

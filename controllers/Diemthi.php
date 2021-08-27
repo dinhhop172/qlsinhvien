@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Models\Database;
+
 class Diemthi
 {
    public static function index()

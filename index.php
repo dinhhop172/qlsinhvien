@@ -1,7 +1,7 @@
 <?php session_start();
 
 use Controllers\Diemthi;
-use Controllers\Database;
+use Models\Database;
 use Controllers\Monhoc;
 use Controllers\Session;
 use Controllers\Sinhvien;

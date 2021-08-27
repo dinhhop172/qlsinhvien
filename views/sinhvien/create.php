@@ -20,15 +20,15 @@ require_once '../temp/header.php';
 
                   <div class="form-group">
                      <label for="">Họ tên</label>
-                     <input type="text" name="hoten" class="form-control" id="" placeholder="Input field">
+                     <input type="text" name="hoten" class="form-control" id="" value="<?= isset($_POST['hoten']) ? $_POST['hoten'] : '' ?>" placeholder="Input field">
                   </div>
                   <div class="form-group">
                      <label for="">Số điện thoại</label>
-                     <input type="text" name="sdt" class="form-control" id="" placeholder="Input field">
+                     <input type="text" name="sdt" class="form-control" id="" value="" placeholder="Input field">
                   </div>
                   <div class="form-group">
                      <label for="">Địa chỉ</label>
-                     <input type="text" name="diachi" class="form-control" id="" placeholder="Input field">
+                     <input type="text" name="diachi" class="form-control" id="" value="" placeholder="Input field">
                   </div>
 
                   <a href="../../index.php" class="btn btn-success">Back</a>
