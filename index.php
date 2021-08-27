@@ -1,28 +1,17 @@
 <?php session_start();
 
-use Controllers\Diemthi;
-use Models\Database;
-use Controllers\Monhoc;
 use Controllers\Session;
 use Controllers\Sinhvien;
 
 require_once './vendor/autoload.php';
 require_once 'views/temp/header.php';
 
-// require_once './controller/Diemthi.php';
-// require_once './controller/Database.php';
-// require_once './controller/Sinhvien.php';
-// require_once './controller/Monhoc.php';
-
-
-$conn = Database::getConnect();
-$data = Diemthi::index();
 $sinhvien = Sinhvien::index();
-$monhoc = Monhoc::index();
 ?>
 <section class="container pt-5">
    <?= Session::getSession('errInsert') ?>
    <?= Session::getSession('succInsert') ?>
+   <?= Session::getSession('succDelete') ?>
    <div class="row mb-3">
       <div class="col-md-12">
          <h3 class="text-center">Danh sách sinh viên</h3>
@@ -30,6 +19,8 @@ $monhoc = Monhoc::index();
    </div>
    <div class="row mb-3">
       <div class="col-md-12">
+         <a href="views/monhoc/index.php" class="btn btn-success float-left mr-2">Môn học</a>
+         <a href="views/diemthi/index.php" class="btn btn-success float-left">Điểm thi</a>
          <a href="views/sinhvien/create.php" class="btn btn-success float-right">Thêm</a>
       </div>
    </div>
@@ -60,15 +51,15 @@ $monhoc = Monhoc::index();
                      <td><?= $row['sdt'] ?></td>
                      <td><?= $row['diachi'] ?></td>
                      <td>
-                        <a data-toggle="modal" data-target="#<?= $row['masv'] ?>" class="btn btn-info">Sửa</a>
-                        <a href="" class="btn btn-danger">Xóa</a>
+                        <a data-toggle="modal" data-target="#<?= $row['masv'] ?>" class="btn text-white btn-info">Sửa</a>
+                        <a href="views/action.php?id=<?= $row['masv'] ?>&deletesv" onclick="return confirm('Chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</a>
                      </td>
                   </tr>
 
                   <div class="modal fade" id="<?= $row['masv'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                      <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                           <div class="modal-header">
+                           <div class="modal-header bg-info text-white">
                               <h5 class="modal-title">Sửa sinh viên</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
@@ -104,97 +95,9 @@ $monhoc = Monhoc::index();
    </div>
 </section>
 
-<section class="container pt-5">
-
-   <div class="row mb-3">
-      <div class="col-md-12">
-         <h3 class="text-center">Danh sách môn học</h3>
-      </div>
-   </div>
-   <div class="row mb-3">
-      <div class="col-md-12">
-         <a href="create.php" class="btn btn-success float-right">Thêm</a>
-      </div>
-   </div>
-
-   <div class="row">
-      <div class="col-md-12">
-         <div class="table-responsive">
-            <table class="table">
-               <tr>
-                  <th>*</th>
-                  <th>Tên môn học</th>
-                  <th>Số tín chỉ</th>
-                  <th></th>
-               </tr>
-               <?php
-               $mamh = 1;
-               while ($row = $monhoc->fetch(PDO::FETCH_ASSOC)) {
-               ?>
-                  <tr>
-                     <td><?= $mamh++ ?></td>
-                     <td><?= $row['tenmonhoc'] ?></td>
-                     <td><?= $row['sotinchi'] ?></td>
-                     <td>
-                        <a href="" class="btn btn-info">Sửa</a>
-                        <a href="" class="btn btn-danger">Xóa</a>
-                     </td>
-                  </tr>
-               <?php } ?>
-            </table>
-         </div>
-      </div>
-   </div>
-</section>
-
-
-<section class="container pt-5">
-
-   <div class="row mb-3">
-      <div class="col-md-12">
-         <h3 class="text-center">Danh sách môn học</h3>
-      </div>
-   </div>
-   <div class="row mb-3">
-      <div class="col-md-12">
-         <a href="create.php" class="btn btn-success float-right">Thêm</a>
-      </div>
-   </div>
-
-   <div class="row">
-      <div class="col-md-12">
-         <div class="table-responsive">
-            <table class="table">
-               <tr>
-                  <th>*</th>
-                  <th>Tên sinh viên</th>
-                  <th>Tên môn học</th>
-                  <th>Điểm</th>
-                  <th>Lần thi</th>
-                  <th></th>
-               </tr>
-               <?php
-               $diem_id = 1;
-               while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-               ?>
-                  <tr>
-                     <td><?= $diem_id++ ?></td>
-                     <td><?= $row['hoten'] ?></td>
-                     <td><?= $row['tenmonhoc'] ?></td>
-                     <td><?= $row['diemso'] ?></td>
-                     <td>
-                        <a href="" class="btn btn-info">Sửa</a>
-                        <a href="" class="btn btn-danger">Xóa</a>
-                     </td>
-                  </tr>
-               <?php } ?>
-            </table>
-         </div>
-      </div>
-   </div>
-</section>
 <?php
 Session::unsetSession("errInsert");
 Session::unsetSession("succInsert");
+Session::unsetSession('succDelete');
 require_once 'views/temp/footer.php';
 ?>

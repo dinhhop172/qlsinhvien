@@ -99,14 +99,17 @@ class Sinhvien
          session_start();
          Session::setSession('errInsert', "<script>alert('Vui lòng nhập đủ dữ liệu');</script>");
       }
+   }
 
-      // print_r($_POST);
-      // $pre = Database::getConnect()->prepare($sql);
-      // $pre->bindParam(':id', $id, PDO::PARAM_INT);
-      // $pre->execute();
-      // if ($pre->rowCount() == 0) {
-      //    return false;
-      // }
-      // return $pre;
+   public function delete($id)
+   {
+      $sql = "DELETE FROM sinhvien WHERE masv=:id";
+      $pre = Database::getConnect()->prepare($sql);
+      $pre->bindParam(':id', $id, PDO::PARAM_INT);
+      $pre->execute();
+      if ($pre) {
+         session_start();
+         Session::setSession("succDelete", "<script>alert('Xóa sinh viên thành công');</script>");
+      }
    }
 }

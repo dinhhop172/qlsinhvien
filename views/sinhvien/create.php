@@ -15,8 +15,8 @@ require_once '../temp/header.php';
       <div class="col-md-8 offset-md-2">
          <div class="card">
             <div class="card-body">
-               <form action="../action.php" method="POST" role="form">
-                  <legend>Thêm thông tin sinh viên</legend>
+               <form action="../action.php" method="POST">
+                  <legend class="bg-info text-white text-center py-2">Thêm thông tin sinh viên</legend>
 
                   <div class="form-group">
                      <label for="">Họ tên</label>
