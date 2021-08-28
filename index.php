@@ -8,7 +8,7 @@ require_once 'views/temp/header.php';
 
 $sinhvien = Sinhvien::index();
 ?>
-<section class="container pt-5">
+<section class="container pt-5 pb-5 mb-5">
    <?= Session::getSession('errInsert') ?>
    <?= Session::getSession('succInsert') ?>
    <?= Session::getSession('succDelete') ?>
