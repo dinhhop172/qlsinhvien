@@ -1,5 +1,7 @@
 <?php
 
+use Controllers\Monhoc;
+use Controllers\Sinhvien;
 use Controllers\Thongke;
 
 require_once '../../vendor/autoload.php';
@@ -151,18 +153,29 @@ require_once '../temp/header.php';
                            <th>Lần thi</th>
                         </tr>
                         <?php
-                        $dtb = Thongke::diemTrungBinh();
-                        $tk = 1;
-                        while ($row = $dtb->fetch(PDO::FETCH_ASSOC)) {
+                        $sv = Sinhvien::index();
+                        $mh = Monhoc::index();
+                        // $dtb = [];
+                        foreach ($sv as $aSV) {
+                           foreach ($mh as $aMH) {
+                              $dtb[] = Thongke::diemTrungBinh($aSV['masv'], $aMH['mamonhoc']);
+                              // echo "<pre>";
+                              // while ($row = $dtb->fetch(PDO::FETCH_ASSOC)) {
+                              //    echo "<pre>";
+                              // print_R($dtb);
+                              // }
+                              // foreach ($dtb as $asd) {
+                              //    echo "<pre>";
+                              //    print($asd);
+                              // }
+                           }
+                        }
+                        foreach ($dtb as $asd) {
+                           echo "<pre>";
+                           print_r($asd);
+                        }
                         ?>
-                           <tr>
-                              <td><?= $tk++ ?></td>
-                              <td><?= $row['hoten'] ?></td>
-                              <td><?= $row['tenmonhoc'] ?></td>
-                              <td><?= $row['diemso'] ?></td>
-                              <td><?= $row['lanthi'] ?></td>
-                           </tr>
-                        <?php } ?>
+
                      </table>
                   </div>
                </div>

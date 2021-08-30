@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Models\Database;
+use PDO;
 
 class Thongke extends Database
 {
@@ -39,14 +40,17 @@ class Thongke extends Database
       $pre->execute();
       return $pre;
    }
-   public static function diemTrungBinh()
+   public static function diemTrungBinh($masv, $mamh)
    {
+
       $sql = "SELECT sinhvien.hoten, monhoc.tenmonhoc, diemthi.diemso, diemthi.lanthi
       FROM diemthi 
       JOIN sinhvien ON diemthi.masinhvien=sinhvien.masv
       JOIN monhoc ON diemthi.mamonhoc=monhoc.mamonhoc
-      WHERE diemthi.diemso < 5";
+            WHERE diemthi.masinhvien=:masinhvien AND diemthi.mamonhoc=:mamonhoc";
       $pre = Database::getConnect()->prepare($sql);
+      $pre->bindParam(':masinhvien', $masv);
+      $pre->bindParam(':mamonhoc', $mamh);
       $pre->execute();
       return $pre;
    }
