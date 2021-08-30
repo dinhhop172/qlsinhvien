@@ -40,17 +40,21 @@ class Thongke extends Database
       $pre->execute();
       return $pre;
    }
-   public static function diemTrungBinh($masv, $mamh)
+   public static function diemTrungBinh()
    {
 
-      $sql = "SELECT sinhvien.hoten, monhoc.tenmonhoc, diemthi.diemso, diemthi.lanthi
-      FROM diemthi 
+      $sql = "SELECT sinhvien.hoten, AVG(diemthi.diemso) as dtb
+      FROM diemthi
       JOIN sinhvien ON diemthi.masinhvien=sinhvien.masv
       JOIN monhoc ON diemthi.mamonhoc=monhoc.mamonhoc
-            WHERE diemthi.masinhvien=:masinhvien AND diemthi.mamonhoc=:mamonhoc";
+      GROUP BY diemthi.masinhvien ORDER BY dtb DESC";
+      // $result = Database::getConnect()->query($sql);
+      // $dtb = [];
+      // while ($row = $result->fetch()) {
+      //    $dtb[] = $row;
+      // }
+      // return $dtb;
       $pre = Database::getConnect()->prepare($sql);
-      $pre->bindParam(':masinhvien', $masv);
-      $pre->bindParam(':mamonhoc', $mamh);
       $pre->execute();
       return $pre;
    }

@@ -1,7 +1,5 @@
 <?php
 
-use Controllers\Monhoc;
-use Controllers\Sinhvien;
 use Controllers\Thongke;
 
 require_once '../../vendor/autoload.php';
@@ -143,39 +141,28 @@ require_once '../temp/header.php';
                </div>
                <div id="collapseFour" class="collapse" aria-labelledby="collapseFour" data-parent="#accordion">
                   <div class="card-body">
-
                      <table class="table">
                         <tr>
                            <th>*</th>
                            <th>Tên sinh viên</th>
-                           <th>Tên môn học</th>
-                           <th>Điểm thi</th>
-                           <th>Lần thi</th>
+                           <th>Điểm trung bình</th>
                         </tr>
                         <?php
-                        $sv = Sinhvien::index();
-                        $mh = Monhoc::index();
-                        // $dtb = [];
-                        foreach ($sv as $aSV) {
-                           foreach ($mh as $aMH) {
-                              $dtb[] = Thongke::diemTrungBinh($aSV['masv'], $aMH['mamonhoc']);
-                              // echo "<pre>";
-                              // while ($row = $dtb->fetch(PDO::FETCH_ASSOC)) {
-                              //    echo "<pre>";
-                              // print_R($dtb);
-                              // }
-                              // foreach ($dtb as $asd) {
-                              //    echo "<pre>";
-                              //    print($asd);
-                              // }
-                           }
-                        }
-                        foreach ($dtb as $asd) {
-                           echo "<pre>";
-                           print_r($asd);
-                        }
+                        $diemtb = Thongke::diemTrungBinh();
+                        $stt = 1;
+                        // $asd = [];
+                        while ($dtb = $diemtb->fetch(PDO::FETCH_ASSOC)) {
+                           // $asd[] = $dtb;
+                           // }
+                           // foreach ($asd as $item) {
+                           // print_r($item);
                         ?>
-
+                           <tr>
+                              <td><?= $stt++ ?></td>
+                              <td><?= $dtb['hoten'] ?></td>
+                              <td><?= $dtb['dtb'] ?></td>
+                           </tr>
+                        <?php } ?>
                      </table>
                   </div>
                </div>
