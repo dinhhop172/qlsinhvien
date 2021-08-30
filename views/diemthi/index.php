@@ -23,7 +23,8 @@ $data = Diemthi::index();
    <div class="row mb-3">
       <div class="col-md-12">
          <a href="../monhoc/index.php" class="btn btn-success float-left mr-2">Môn học</a>
-         <a href="../../index.php" class="btn btn-success float-left">Sinh viên</a>
+         <a href="../../index.php" class="btn btn-success float-left mr-2">Sinh viên</a>
+         <a href="../thongke/index.php" class="btn btn-success float-left">Thống kê</a>
          <a href="create.php" class="btn btn-success float-right">Thêm</a>
       </div>
    </div>

@@ -20,7 +20,8 @@ $sinhvien = Sinhvien::index();
    <div class="row mb-3">
       <div class="col-md-12">
          <a href="views/monhoc/index.php" class="btn btn-success float-left mr-2">Môn học</a>
-         <a href="views/diemthi/index.php" class="btn btn-success float-left">Điểm thi</a>
+         <a href="views/diemthi/index.php" class="btn btn-success float-left mr-2">Điểm thi</a>
+         <a href="views/thongke/index.php" class="btn btn-success float-left">Thống kê</a>
          <a href="views/sinhvien/create.php" class="btn btn-success float-right">Thêm</a>
       </div>
    </div>

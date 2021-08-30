@@ -21,9 +21,10 @@ $monhoc = Monhoc::index();
    </div>
    <div class="row mb-3">
       <div class="col-md-12">
-         <a href="../../index.php" class="btn btn-success float-left mr-2">Sinh viên</a>
-         <a href="../diemthi/index.php" class="btn btn-success float-left">Điểm thi</a>
-         <a href="create.php" class="btn btn-success float-right">Thêm</a>
+         <a href="../../index.php" class="btn btn-info float-left mr-2">Sinh viên</a>
+         <a href="../diemthi/index.php" class="btn btn-info float-left mr-2">Điểm thi</a>
+         <a href="../thongke/index.php" class="btn btn-info float-left">Thống kê</a>
+         <a href="create.php" class="btn btn-info float-right">Thêm</a>
       </div>
    </div>
 
@@ -46,7 +47,7 @@ $monhoc = Monhoc::index();
                      <td><?= $row['tenmonhoc'] ?></td>
                      <td><?= $row['sotinchi'] ?></td>
                      <td>
-                        <a href="" data-toggle="modal" data-target="#<?= $row['mamonhoc'] ?>" class="btn btn-info">Sửa</a>
+                        <a href="" data-toggle="modal" data-target="#<?= $row['mamonhoc'] ?>" class="btn btn-primary">Sửa</a>
                         <a href="../action.php?id=<?= $row['mamonhoc'] ?>&deletemh" onclick="return confirm('Chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</a>
                      </td>
                   </tr>
