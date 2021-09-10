@@ -1,14 +1,16 @@
 {
-    "name": "domdom/qlsinhvienat",
-    "authors": [{
-        "name": "Hop Hoang",
-        "email": "dinhhop1702@gmail.com"
-    }],
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "Controllers\\": "controllers/",
-            "Models\\": "models/"
-        }
+  "name": "domdom/qlsinhvienat",
+  "authors": [
+    {
+      "name": "Hop Hoang",
+      "email": "dinhhop1702@gmail.com"
     }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Controllers\\": "controllers/",
+      "Models\\": "models/"
+    }
+  }
 }

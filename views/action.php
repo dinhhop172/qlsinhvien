@@ -15,7 +15,7 @@ if (isset($_POST['add_student'])) {
 }
 if (isset($_POST['update_student'])) {
    $updateStudent = new Sinhvien();
-   $updateStudent->update($_POST);
+   $updateStudent->update();
    header("location: ../index.php");
 }
 if (isset($_GET['deletesv'])) {
@@ -31,7 +31,7 @@ if (isset($_POST['add_subject'])) {
 }
 if (isset($_POST['update_subject'])) {
    $updateSubject = new Monhoc();
-   $updateSubject->update($_POST);
+   $updateSubject->update();
    header("location: monhoc/index.php");
 }
 
@@ -50,7 +50,7 @@ if (isset($_POST['add_point'])) {
 
 if (isset($_POST['update_point'])) {
    $updateDiemthi = new Diemthi();
-   $updateDiemthi->update($_POST);
+   $updateDiemthi->update();
    header("location: diemthi/index.php");
 }
 
